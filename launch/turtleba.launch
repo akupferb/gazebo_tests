@@ -1,12 +1,13 @@
 <launch>
-    <include
-      file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
-    </include>
+  <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+    <arg name="world_file" value="$(find gazebo_tests)/world/world1.world"/>
+  </include>
 
-    <node
-      name="turtleba"
-      pkg="gazebo_tests"
-      type="turtleba"
-      output="screen"
-    />
- </launch>  
+  <node
+    name="turtleba"
+    pkg="gazebo_tests"
+    type="turtleba"
+    output="screen"
+    launch-prefix="gnome-terminal --command"
+  />
+</launch>  
