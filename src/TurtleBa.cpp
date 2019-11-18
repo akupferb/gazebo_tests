@@ -30,13 +30,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 TurtleBa::TurtleBa() {
     // Initialize the obstacle checker as False
     obstacleCheck = false;
-    
+
     // Publish the velocity to the discovered topic: cmd_vel_mux/input/navi
     publishVelocity = nh.advertise <geometry_msgs::Twist>("/cmd_vel_mux/input/navi", 1000);
-    
+
     // Subcribe to the /scan topic and use the scannerCallback function
     subscribeSensor = nh.subscribe <sensor_msgs::LaserScan> ("/scan", 500, &WalkerAlgorithm::sensorCallback, this);
-    
+
     // Initialize the turtlebot to be at rest
     msg.linear.x = 0.0;
     msg.linear.y = 0.0;
@@ -44,12 +44,12 @@ TurtleBa::TurtleBa() {
     msg.angular.x = 0.0;
     msg.angular.y = 0.0;
     msg.angular.z = 0.0;
-    
+
     // Send the initial data to the robot
     publishVelocity.publish(msg);
 }
 
-void TurtleBa::sensorCallback (const sensor_msgs::LaserScan::ConstPtr& data) {
+void TurtleBa::sensorCallback(const sensor_msgs::LaserScan::ConstPtr& data) {
     double safeDistance = 0.8;
     for (auto distRange : data->ranges) {
         if (distRange < safeDistance) {
@@ -67,7 +67,7 @@ bool TurtleBa::isObstacle() {
 void TurtleBa::runAlgorithm() {
     // Set Publish frequency
     ros::Rate freqRate(10);
-    
+
     while (ros::ok()) {
         // Check for obstacle and react as defined
         if (isObstacle()) {

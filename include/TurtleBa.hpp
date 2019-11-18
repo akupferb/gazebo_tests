@@ -32,8 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *  @brief  This is the header file for the TurtleBa Class
  */
 
-#ifndef GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
-#define GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
+#ifndef INCLUDE_TURTLEBA_HPP_
+#define INCLUDE_TURTLEBA_HPP_
 
 #include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
@@ -88,4 +88,4 @@ class TurtleBa {
   ~TurtleBa();
 };
 
-#endif  // GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
+#endif  // INCLUDE_TURTLEBA_HPP_
