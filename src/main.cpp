@@ -25,8 +25,21 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/**
+ *  @file   main.cpp
+ *  @author Ari Kupferberg
+ *  @date   11/18/2019
+ *  @brief  This is the Main application to run the Turtlebot "roomba" algorithm
+ */
 #include "TurtleBa.hpp"
 
+
+/**
+*  @brief   This is the main function
+*  @param	  argc for ROS
+*  @param	  argv[] for ROS
+*  @return	0 Exit status
+*/
 int main(int argc, char* argv[]) {
   // Initialize the ROS node
   ros::init(argc, argv, "turtleba");

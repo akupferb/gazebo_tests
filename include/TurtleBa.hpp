@@ -25,6 +25,12 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/**
+ *  @file   turtleBa.hpp
+ *  @author Ari Kupferberg
+ *  @date   11/18/2019
+ *  @brief  This is the header file for the TurtleBa Class
+ */
 
 #ifndef GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
 #define GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
@@ -35,25 +41,50 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class TurtleBa {
  private:
-  ros::NodeHandle nh
+  ros::NodeHandle nh;  ///< Create a node handle
 
-  ros::Publisher publishVelocity;
+  ros::Publisher publishVelocity;  ///< Publisher to the turtlebot 'velocity' topic.
 
-  ros::Subscriber subscribeSensor;
+  ros::Subscriber subscribeSensor;  ///< Subscriber to turtlebot 'laserscan' topic
 
-  geometry_msgs::Twist msg;
+  geometry_msgs::Twist msg;  ///< Variable used for publishing velocity messages
 
-  bool obstacleCheck;
+  bool obstacleCheck;  ///< Declare a variable to detect poosible collision
 
  public:
+  /**
+  *  @brief   This is the constructor for the Class object
+  *  @param	  None
+  *  @return	None
+  */
   TurtleBa();
 
+  /**
+  *  @brief   This is the call back function for the subscriber
+  *  @param	  data
+  *  @return	None
+  */
   void sensorCallback(const sensor_msgs::LaserScan::ConstPtr& data);
 
+  /**
+  *  @brief   This is the function that checks if there is an obstacle
+  *  @param	  None
+  *  @return	boolean
+  */
   bool isObstacle();
 
+  /**
+  *  @brief   This is the function that runs the implementation
+  *  @param	  None
+  *  @return	None
+  */
   void runAlgorithm();
 
+  /**
+  *  @brief   This is the destructor for the Class object
+  *  @param	  None
+  *  @return	None
+  */
   ~TurtleBa();
 };
 
