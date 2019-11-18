@@ -1,0 +1,12 @@
+$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+
+./include/TurtleBa.hpp:46:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./include/TurtleBa.hpp:48:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./include/TurtleBa.hpp
+Done processing ./src/main.cpp
+./src/TurtleBa.cpp:35:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./src/TurtleBa.cpp:38:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./src/TurtleBa.cpp
+
+Total errors found: 4
+

@@ -1,0 +1,28 @@
+<launch>
+
+  <arg
+    name = "use_rosbag"
+    default = "false"
+  />
+  
+  <include file = "$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+    <arg name = "world_file" value="$(find gazebo_tests)/world/world1.world"/>
+  </include>
+
+  <group if="$(arg use_rosbag)">
+    <node
+      pkg = "rosbag"
+      name = "use_rosbag"
+      type = "use_rosbag"
+      args = "--duration=30.0 -a -x /camera/(.*) -O $(find gazebo_tests)/results/recording.bag"
+    />
+  </group>
+  
+  <node
+    name = "turtleba"
+    pkg = "gazebo_tests"
+    type = "turtleba"
+    output = "screen"
+    launch-prefix = "gnome-terminal --command"
+  />
+</launch>  
