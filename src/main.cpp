@@ -25,36 +25,17 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+#include "TurtleBa.hpp"
 
-#ifndef GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
-#define GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
+int main(int argc, char* argv[]) {
+  // Initialize the ROS node
+  ros::init(argc, argv, "turtleba");
 
-#include "ros/ros.h"
-#include "sensor_msgs/LaserScan.h"
-#include "geometry_msgs/Twist.h"
+  // Create an object of the TurtleBa Class
+  TurtleBa turtleRoomba;
 
-class TurtleBa {
- private:
-  ros::NodeHandle nh
+  // Run the turtleba implementation
+  turtleRoomba.runAlgorithm();
 
-  ros::Publisher publishVelocity;
-
-  ros::Subscriber subscribeSensor;
-
-  geometry_msgs::Twist msg;
-
-  bool obstacleCheck;
-
- public:
-  TurtleBa();
-
-  void sensorCallback(const sensor_msgs::LaserScan::ConstPtr& data);
-
-  bool isObstacle();
-
-  void runAlgorithm();
-
-  ~TurtleBa();
-};
-
-#endif  // GAZEBO_TESTS_INCLUDE_TURTLEBA_HPP
+  return 0;
+}
